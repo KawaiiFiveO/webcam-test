@@ -74,7 +74,6 @@ stopMicButton.addEventListener('click', () => {
 function visualize() {
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
-
     function draw() {
         requestAnimationFrame(draw);
 
@@ -89,14 +88,15 @@ function visualize() {
         let x = 0;
 
         for (let i = 0; i < bufferLength; i++) {
-            barHeight = dataArray[i] / 2;
+            // Correct bar height calculation to fill the entire canvas height
+            barHeight = (dataArray[i] / 255) * canvas.height;
 
+            // Draw the bars on the canvas
             canvasCtx.fillStyle = `rgb(${barHeight + 100}, 50, 50)`;
-            canvasCtx.fillRect(x, canvas.height - barHeight / 2, barWidth, barHeight);
+            canvasCtx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
 
             x += barWidth + 1;
         }
     }
-
     draw();
 }
