@@ -68,6 +68,8 @@ stopMicButton.addEventListener('click', () => {
     if (audioContext) {
         audioContext.close();
     }
+    // Cancel the animation loop to stop the visualizer
+    cancelAnimationFrame(animationId);
 });
 
 // Visualize Audio Input
@@ -75,7 +77,7 @@ function visualize() {
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
     function draw() {
-        requestAnimationFrame(draw);
+        animationId = requestAnimationFrame(draw);
 
         analyser.getByteFrequencyData(dataArray);
         canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
