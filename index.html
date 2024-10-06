@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webcam Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Webcam and Microphone Tester</h1>
+        
+        <!-- Webcam Test -->
+        <div class="webcam-section">
+            <h2>Webcam Test</h2>
+            <video id="webcamVideo" autoplay playsinline></video>
+            
+            <!-- Button container to align buttons horizontally -->
+            <div class="button-container">
+                <button id="startWebcam">Start Webcam</button>
+                <button id="stopWebcam" disabled>Stop Webcam</button>
+            </div>
+        </div>
+
+
+        <!-- Microphone Test -->
+        <div class="microphone-section">
+            <h2>Microphone Test</h2>
+            <p id="micStatus">Click "Start Microphone" to test.</p>
+            <button id="startMic">Start Microphone</button>
+            <button id="stopMic" disabled>Stop Microphone</button>
+            <canvas id="audioVisualizer"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
